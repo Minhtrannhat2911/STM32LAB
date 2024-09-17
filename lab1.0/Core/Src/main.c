@@ -93,6 +93,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin | LED_12_Pin | LED_6_Pin, GPIO_PIN_SET);
+	  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_8_Pin | LED_9_Pin | LED_10_Pin | LED_4_Pin, GPIO_PIN_RESET);
+	  HAL_Delay(3000);
+	  HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin| LED_11_Pin | LED_5_Pin, GPIO_PIN_SET);
+	  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_12_Pin | LED_6_Pin, GPIO_PIN_RESET);
+	  HAL_Delay(2000);
+	  HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_9_Pin | LED_10_Pin | LED_4_Pin, GPIO_PIN_SET);
+	  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_12_Pin | LED_6_Pin | LED_1_Pin|LED_11_Pin|LED_5_Pin|LED_7_Pin, GPIO_PIN_RESET);
+	  HAL_Delay(3000);
+	  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_8_Pin | LED_10_Pin | LED_4_Pin, GPIO_PIN_SET);
+	  HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_9_Pin, GPIO_PIN_RESET);
+	  HAL_Delay(2000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
