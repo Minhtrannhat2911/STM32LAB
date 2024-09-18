@@ -95,7 +95,9 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  int clock = 0;
+  int hour = 0;
+  int minute = 0;
+  int second = 0;
 
   void clearNumberOnClock(int num){
 	  if (num > 12 || num < 0) return;
@@ -113,6 +115,21 @@ int main(void)
   }
   while (1)
   {
+	  if (second == 12){
+		  second = 0;
+		  minute ++;
+	  }
+	  if (minute == 12){
+	  	  minute =0;
+	  	  hour ++;
+	  }
+	  if (hour == 12) hour = 0;
+	  clearALLClock();
+	  setnumbeonclock(hour);
+	  setnumbeonclock(minute);
+	  setnumbeonclock(second);
+	  second++;
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
