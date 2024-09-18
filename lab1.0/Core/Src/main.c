@@ -48,6 +48,9 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+void display7SEG(int num);
+void displayclock(int num);
+void clearALLClock();
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -87,82 +90,22 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
 
-  void display7SEG(GPIO_TypeDef* GPIOx, uint16_t seg0, uint16_t seg1, uint16_t seg2, uint16_t seg3, uint16_t seg4, uint16_t seg5, uint16_t seg6, int num) {
-      // Tắt tất cả các segment của display
-      HAL_GPIO_WritePin(GPIOx, seg0 | seg1 | seg2 | seg3 | seg4 | seg5 | seg6, GPIO_PIN_SET);
-
-      switch (num) {
-          case 0:
-              HAL_GPIO_WritePin(GPIOx, seg0 | seg1 | seg2 | seg3 | seg4 | seg5, GPIO_PIN_RESET);
-              break;
-          case 1:
-              HAL_GPIO_WritePin(GPIOx, seg1 | seg2, GPIO_PIN_RESET);
-              break;
-          case 2:
-              HAL_GPIO_WritePin(GPIOx, seg0 | seg1 | seg3 | seg4 | seg6, GPIO_PIN_RESET);
-              break;
-          case 3:
-              HAL_GPIO_WritePin(GPIOx, seg0 | seg1 | seg2 | seg3 | seg6, GPIO_PIN_RESET);
-              break;
-          case 4:
-              HAL_GPIO_WritePin(GPIOx, seg1 | seg2 | seg5 | seg6, GPIO_PIN_RESET);
-              break;
-          case 5:
-              HAL_GPIO_WritePin(GPIOx, seg0 | seg2 | seg3 | seg5 | seg6, GPIO_PIN_RESET);
-              break;
-          case 6:
-              HAL_GPIO_WritePin(GPIOx, seg0 | seg2 | seg3 | seg4 | seg5 | seg6, GPIO_PIN_RESET);
-              break;
-          case 7:
-              HAL_GPIO_WritePin(GPIOx, seg0 | seg1 | seg2, GPIO_PIN_RESET);
-              break;
-          case 8:
-              HAL_GPIO_WritePin(GPIOx, seg0 | seg1 | seg2 | seg3 | seg4 | seg5, GPIO_PIN_RESET);
-              break;
-          case 9:
-              HAL_GPIO_WritePin(GPIOx, seg0 | seg1 | seg2 | seg3 | seg5 | seg6, GPIO_PIN_RESET);
-              break;
-          default:
-              HAL_GPIO_WritePin(GPIOx, seg0 | seg1 | seg2 | seg3 | seg4 | seg5 | seg6, GPIO_PIN_SET);
-              break;
-      }
-  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-  int counter1, counter2;
-  int a = 0;
-  int b = 0;
+  int clock = 0;
+  void displayclock(int num){
+  	  if (num > 12 || num < 0) return;
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 << num, GPIO_PIN_SET);
+      HAL_Delay(1000);
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 << num, GPIO_PIN_RESET);
+  }
   while (1)
   {
-for (counter = 5; counter >= 0; counter--)
-  {
-      HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin , GPIO_PIN_SET);
-      HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_8_Pin | LED_9_Pin | LED_10_Pin | LED_4_Pin |LED_12_Pin | LED_6_Pin, GPIO_PIN_RESET); // Other LEDs OFF
-      display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter);
-      HAL_Delay(1000);
-  }
-
-
-  // Green Light (3 seconds)
-for (counter = 3; counter >= 0; counter--)
-    {
-        HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin | LED_11_Pin | LED_5_Pin, GPIO_PIN_SET);
-        HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_12_Pin | LED_6_Pin, GPIO_PIN_RESET);
-        display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter);
-        HAL_Delay(1000);
-    }
-
-  // Yellow Light (2 seconds)
-for (counter = 2; counter >= 0; counter--)
-  {
-      HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_9_Pin | LED_10_Pin | LED_4_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_12_Pin | LED_6_Pin | LED_1_Pin | LED_11_Pin | LED_5_Pin | LED_7_Pin, GPIO_PIN_RESET); // Other LEDs OFF
-      display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter);
-      HAL_Delay(1000);
-  }
+	  if(clock >= 12) clock = 0;
+	  displayclock(clock++);
+	  HAL_Delay (1000);
 
 
 
