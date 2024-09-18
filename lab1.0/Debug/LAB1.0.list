@@ -110,11 +110,11 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
  8000160:	f000 f8a2 	bl	80002a8 <MX_GPIO_Init>
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
   int hour = 0;
  8000164:	2300      	movs	r3, #0
  8000166:	60fb      	str	r3, [r7, #12]

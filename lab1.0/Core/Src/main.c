@@ -94,7 +94,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
   int hour = 0;
   int minute = 0;
   int second = 0;
