@@ -48,6 +48,7 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+void trafficlight(int num);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -127,42 +128,139 @@ int main(void)
               break;
       }
   }
+
+  void trafficlight(int num){
+	  int counter1, counter2;
+	  switch (num){
+	  	  	  case 0:
+	  	  		  counter1 = 5;
+	  	  		  counter2 = 3;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin|LED_6_Pin|LED_12_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_4_Pin | LED_5_Pin | LED_9_Pin | LED_10_Pin |LED_8_Pin | LED_11_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  	  case 1:
+	  	  		  counter1 = 4;
+	  	  		  counter2 = 2;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin|LED_6_Pin|LED_12_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_4_Pin | LED_5_Pin | LED_9_Pin | LED_10_Pin |LED_8_Pin | LED_11_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  	  case 2:
+	  	  		  counter1 = 3;
+	  	  		  counter2 = 1;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin|LED_6_Pin|LED_12_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_4_Pin | LED_5_Pin | LED_9_Pin | LED_10_Pin |LED_8_Pin | LED_11_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  	  case 3:
+	  	  		  counter1 = 2;
+	  	  		  counter2 = 0;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin|LED_6_Pin|LED_12_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_4_Pin | LED_5_Pin | LED_9_Pin | LED_10_Pin |LED_8_Pin | LED_11_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  	  case 4:
+	  	  		  counter1 = 1;
+	  	  		  counter2 = 2;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin|LED_5_Pin|LED_11_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_4_Pin | LED_6_Pin | LED_9_Pin | LED_10_Pin |LED_8_Pin | LED_12_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  	  case 5:
+	  	  		  counter1 = 0;
+	  	  		  counter2 = 1;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin|LED_5_Pin|LED_11_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_4_Pin | LED_6_Pin | LED_9_Pin | LED_10_Pin |LED_8_Pin | LED_12_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  	  case 6:
+	  	  		  counter1 = 3;
+	  	  		  counter2 = 0;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_9_Pin|LED_5_Pin|LED_11_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_1_Pin | LED_4_Pin | LED_6_Pin | LED_7_Pin | LED_10_Pin |LED_8_Pin | LED_12_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  	  case 7:
+	  	  		  counter1 = 2;
+	  	  		  counter2 = 5;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_9_Pin|LED_4_Pin|LED_10_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_1_Pin | LED_7_Pin | LED_6_Pin | LED_5_Pin | LED_11_Pin |LED_8_Pin | LED_12_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  	  case 8:
+	  	  		  counter1 = 1;
+	  	  		  counter2 = 4;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_9_Pin|LED_4_Pin|LED_10_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_1_Pin | LED_7_Pin | LED_6_Pin | LED_5_Pin | LED_11_Pin |LED_8_Pin | LED_12_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  	  case 9:
+	  	  		  counter1 = 0;
+	  	  		  counter2 = 3;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_9_Pin|LED_4_Pin|LED_10_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_1_Pin | LED_7_Pin | LED_6_Pin | LED_5_Pin | LED_11_Pin |LED_8_Pin | LED_12_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  	  case 10:
+	  	  		  counter1 = 2;
+	  	  		  counter2 = 2;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_8_Pin|LED_4_Pin|LED_10_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_1_Pin | LED_7_Pin | LED_6_Pin | LED_5_Pin | LED_11_Pin |LED_9_Pin | LED_12_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  	  case 11:
+	  	  		  counter1 = 1;
+	  	  		  counter2 = 1;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_8_Pin|LED_4_Pin|LED_10_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_1_Pin | LED_7_Pin | LED_6_Pin | LED_5_Pin | LED_11_Pin |LED_9_Pin | LED_12_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  	  case 12:
+	  	  		  counter1 = 0;
+	  	  		  counter2 = 0;
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_8_Pin|LED_4_Pin|LED_10_Pin , GPIO_PIN_SET);
+	  	  		  HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_1_Pin | LED_7_Pin | LED_6_Pin | LED_5_Pin | LED_11_Pin |LED_9_Pin | LED_12_Pin, GPIO_PIN_RESET);
+	  	  		  display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
+	  	  		  display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
+	  	  		  HAL_Delay(1000);
+	  	  		  break;
+	  	  }
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
-  int counter1, counter2;
-  int a = 0;
-  int b = 0;
+  int num = 0;
   while (1)
   {
-for (counter = 5; counter >= 0; counter--)
-  {
-      HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin , GPIO_PIN_SET);
-      HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_8_Pin | LED_9_Pin | LED_10_Pin | LED_4_Pin |LED_12_Pin | LED_6_Pin, GPIO_PIN_RESET); // Other LEDs OFF
-      display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter);
-      HAL_Delay(1000);
-  }
 
-
-  // Green Light (3 seconds)
-for (counter = 3; counter >= 0; counter--)
-    {
-        HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin | LED_11_Pin | LED_5_Pin, GPIO_PIN_SET);
-        HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_12_Pin | LED_6_Pin, GPIO_PIN_RESET);
-        display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter);
-        HAL_Delay(1000);
-    }
-
-  // Yellow Light (2 seconds)
-for (counter = 2; counter >= 0; counter--)
-  {
-      HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_9_Pin | LED_10_Pin | LED_4_Pin, GPIO_PIN_SET);
-      HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_12_Pin | LED_6_Pin | LED_1_Pin | LED_11_Pin | LED_5_Pin | LED_7_Pin, GPIO_PIN_RESET); // Other LEDs OFF
-      display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter);
-      HAL_Delay(1000);
-  }
+	  if(num > 12) num=0;
+	  trafficlight(num++);
 
 
 
