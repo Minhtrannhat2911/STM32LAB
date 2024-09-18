@@ -131,83 +131,39 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
   int counter1, counter2;
   int a = 0;
   int b = 0;
   while (1)
   {
-	  for (counter1 = 5, counter2 = 3; counter1 >= 0;counter1--, counter2--) {
-	      if (counter2 < 0){
-	    	  counter2 = 2;
-	    	  a = 1; // Reset counter2 nếu hết 3 giây
-	      }
-	      if(a == 1){
-	    	  HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin |LED_11_Pin | LED_5_Pin, GPIO_PIN_SET);
-	    	  HAL_GPIO_WritePin(GPIOB, LED_12_Pin | LED_6_Pin | LED_4_Pin | LED_8_Pin | LED_2_Pin | LED_3_Pin |LED_10_Pin | LED_9_Pin, GPIO_PIN_RESET);
-	    	  if(counter2 == 0) a = 0;
-	      }
-	      else{
-	    	  HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin, GPIO_PIN_SET); // red
-	    	  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_8_Pin | LED_9_Pin, GPIO_PIN_RESET); // off
+for (counter = 5; counter >= 0; counter--)
+  {
+      HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin , GPIO_PIN_SET);
+      HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_8_Pin | LED_9_Pin | LED_10_Pin | LED_4_Pin |LED_12_Pin | LED_6_Pin, GPIO_PIN_RESET); // Other LEDs OFF
+      display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter);
+      HAL_Delay(1000);
+  }
 
-	      // green
-	    	  HAL_GPIO_WritePin(GPIOB, LED_12_Pin | LED_6_Pin, GPIO_PIN_SET);
-	    	  HAL_GPIO_WritePin(GPIOB, LED_4_Pin | LED_5_Pin | LED_10_Pin | LED_11_Pin , GPIO_PIN_RESET); // off
-	      }
-	      // Display
-	      display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
-	      display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
 
-	      HAL_Delay(1000);
-	  }
+  // Green Light (3 seconds)
+for (counter = 3; counter >= 0; counter--)
+    {
+        HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin | LED_11_Pin | LED_5_Pin, GPIO_PIN_SET);
+        HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_3_Pin | LED_12_Pin | LED_6_Pin, GPIO_PIN_RESET);
+        display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter);
+        HAL_Delay(1000);
+    }
 
-	  // Đèn xanh
-	  for (counter1 = 3, counter2 = 0; counter1 >= 0; counter1--, counter2--) {
-	      if (counter2 < 0){
-	    	  counter2 = 5;
-	    	  b = 1;
-	      }
-	      if(counter1 == 3 && counter2==0){
-	    	  HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_8_Pin| LED_10_Pin|LED_4_Pin, GPIO_PIN_SET);
-	    	  HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin | LED_9_Pin | LED_5_Pin | LED_6_Pin | LED_11_Pin | LED_12_Pin, GPIO_PIN_RESET);
-	      }
-	      if(b == 1){
-	    	  HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_9_Pin | LED_10_Pin | LED_4_Pin, GPIO_PIN_SET);
-	    	  HAL_GPIO_WritePin(GPIOB, LED_7_Pin | LED_5_Pin | LED_6_Pin | LED_1_Pin | LED_11_Pin | LED_12_Pin|LED_2_Pin|LED_8_Pin, GPIO_PIN_RESET);
-	    	  if(counter2 == 0) b=0;
-	      }
-	      else{
-	      HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_8_Pin, GPIO_PIN_SET); // green
-	      HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin | LED_2_Pin | LED_8_Pin, GPIO_PIN_RESET);
+  // Yellow Light (2 seconds)
+for (counter = 2; counter >= 0; counter--)
+  {
+      HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_9_Pin | LED_10_Pin | LED_4_Pin, GPIO_PIN_SET);
+      HAL_GPIO_WritePin(GPIOB, LED_2_Pin | LED_12_Pin | LED_6_Pin | LED_1_Pin | LED_11_Pin | LED_5_Pin | LED_7_Pin, GPIO_PIN_RESET); // Other LEDs OFF
+      display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter);
+      HAL_Delay(1000);
+  }
 
-	      HAL_GPIO_WritePin(GPIOB, LED_10_Pin | LED_4_Pin, GPIO_PIN_SET); // red
-	      HAL_GPIO_WritePin(GPIOB, LED_7_Pin | LED_5_Pin | LED_6_Pin | LED_1_Pin | LED_11_Pin | LED_12_Pin, GPIO_PIN_RESET); //
-	      }
-
-	      display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
-	      display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
-
-	      HAL_Delay(1000);
-	  }
-
-      for (counter1 = 3, counter2 = 2; counter1 >= 0 || counter2 >= 0; counter1--, counter2--) {
-          if (counter2 < 0) counter2 = 2; // Reset counter2 khi hết 2 giây
-
-          // Cập nhật trạng thái đèn giao thông
-          // Đèn xanh cho display7SEG (LED_3, LED_9)
-          HAL_GPIO_WritePin(GPIOB, LED_3_Pin | LED_9_Pin, GPIO_PIN_SET); // Đèn xanh
-          HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin | LED_2_Pin | LED_8_Pin, GPIO_PIN_RESET); // Đèn khác tắt
-
-          // Đèn vàng cho display7SEG1 (LED_4, LED_10)
-          HAL_GPIO_WritePin(GPIOB, LED_4_Pin | LED_10_Pin, GPIO_PIN_SET); // Đèn vàng
-          HAL_GPIO_WritePin(GPIOB, LED_1_Pin | LED_7_Pin | LED_5_Pin | LED_6_Pin | LED_11_Pin | LED_12_Pin, GPIO_PIN_RESET); // Đèn khác tắt
-
-          // Hiển thị số đếm ngược cho từng display
-          display7SEG(GPIOA, SEG_0_Pin, SEG_1_Pin, SEG_2_Pin, SEG_3_Pin, SEG_4_Pin, SEG_5_Pin, SEG_6_Pin, counter1);
-          display7SEG(GPIOA, SEG1_0_Pin, SEG1_1_Pin, SEG1_2_Pin, SEG1_3_Pin, SEG1_4_Pin, SEG1_5_Pin, SEG1_6_Pin, counter2);
-
-          HAL_Delay(1000);
-      }
 
 
     /* USER CODE END WHILE */
