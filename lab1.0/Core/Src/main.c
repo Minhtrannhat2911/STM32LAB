@@ -94,21 +94,25 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
   int clock = 0;
-  void displayclock(int num){
-  	  if (num > 12 || num < 0) return;
-      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 << num, GPIO_PIN_SET);
-      HAL_Delay(1000);
+
+  void clearNumberOnClock(int num){
+	  if (num > 12 || num < 0) return;
       HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 << num, GPIO_PIN_RESET);
+  }
+
+  void setnumbeonclock(int num){
+  	//TODO
+	  if (num > 12 || num < 0) return;
+	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 << num, GPIO_PIN_SET);
+  }
+
+  void clearALLClock(){
+  	HAL_GPIO_WritePin(GPIOB, LED_10_Pin |LED_1_Pin |LED_2_Pin |LED_3_Pin |LED_4_Pin |LED_5_Pin |LED_6_Pin|LED_7_Pin |LED_8_Pin |LED_9_Pin|LED_11_Pin|LED_12_Pin, GPIO_PIN_RESET);
   }
   while (1)
   {
-	  if(clock >= 12) clock = 0;
-	  displayclock(clock++);
-	  HAL_Delay (1000);
-
-
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
