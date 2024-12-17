@@ -1,0 +1,6 @@
+../Core/Src/main.c:67:5:main	4
+../Core/Src/main.c:106:8:setnumbeonclock	3
+../Core/Src/main.c:112:8:clearALLClock	1
+../Core/Src/main.c:143:6:SystemClock_Config	3
+../Core/Src/main.c:179:13:MX_GPIO_Init	1
+../Core/Src/main.c:235:6:Error_Handler	1
